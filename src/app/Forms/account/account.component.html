@@ -1,0 +1,321 @@
+<div class="d-flex" style="width: 100vw;">
+    <div style="width: 50vw;" *ngIf="authService.windowWidth>800">
+        <img src="assets/Images/pic.jpg" style="width:50vw;position: fixed;">
+    </div>
+    <div style="width: 50vw; text-align: center !important;"
+        [ngStyle]="{'padding-top': isLoginPage && !isForgetPassword ? '27vh' : (!isLoginPage && !isForgetPassword ? '18vh' : '32vh')}">
+        <div style="margin-left: 115px;" [ngStyle]="{'width': authService.windowWidth>800 ? '35vw' :'60vw'}">
+            {{isLoginPage}} -  {{checkYourEmail}}  - {{confirmationEmail}} - {{isForgetPassword}}
+            <!-- Login Page -->
+            <div class="fs" *ngIf="isLoginPage && !isForgetPassword">
+                <div class="border p-3">
+                    <div class="row pt-2">
+                        <div class="col-12 text-center">
+                            <h4>INFIEMAIL</h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Username</label> <b class="text-danger">*</b>
+                            <input (change)="validate('L','key','U')" type="text" class="form-control shadow-none"
+                                placeholder="example@domain.com" id="txtLUsername" [(ngModel)]="user.Username">
+                            <small class="text-danger er-msg" id="txtLUsernameerror"></small>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Password</label><b class="text-danger">*</b><label class="float-end"
+                                (click)="showPassword=!showPassword">
+                                <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}" width="13px">
+                                <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
+                            </label>
+                            <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
+                                placeholder="Password" id="txtLPassword" [(ngModel)]="user.Password"
+                                (change)="validate('L','key','P')" (keyup.enter)="validate('L','click','P')">
+                            <small class="text-danger er-msg" id="txtLPassworderror"></small>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                (click)="signin()">
+                                <i class="btn p-0 ms-1 me-2" id="spin-btn" *ngIf="isSpinner"></i>SIGN IN</button>
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-12 text-center">
+                            <a class="fc" (click)="isForgetPassword=true;isLoginPage=false; clearData()">Forgot
+                                password? / </a>
+                            <a class="fc" (click)="isLoginPage=false; clearData()">Signup</a><br>
+                            <small> A product of AboutBox,Inc</small>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Register Page -->
+            <div class="fs d-none" *ngIf="!isLoginPage && !isForgetPassword && !checkYourEmail">
+                <div class="border p-3">
+                    <div class="row pt-2">
+                        <div class="col-12 text-center">
+                            <h4>INFIEMAIL</h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Username</label><b class="text-danger">*</b>
+                            <input type="text" class="form-control shadow-none" placeholder="example@domain.com"
+                                id="txtUsername" [(ngModel)]="user.Username" (change)="validate('R','key','U')">
+                            <small class="text-danger er-msg" id="unerror"></small>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Password</label><b class="text-danger">*</b><label class="float-end"
+                                (click)="showPassword=!showPassword">
+                                <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
+                                <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}" width="13px">
+                            </label>
+                            <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
+                                placeholder="Password" id="txtPassword" [(ngModel)]="user.Password"
+                                (change)="validate('R','key','P')">
+                            <small class="text-danger er-msg" id="pserror"></small>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Confirm Password</label><b class="text-danger">*</b>
+                            <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
+                                placeholder="Confirm Password" id="txtConfirmPassword"
+                                (change)="validate('R','key','CC')" (keyup.enter)="validate('R','click','CC')">
+                            <small class="text-danger er-msg" id="cpserror"></small>
+                        </div>
+                    </div>
+                    <!-- <div class="row pt-2" *ngIf="isOtp">
+                        <div class="col-12 text-start"><b class="text-danger">*</b>
+                            <label>OTP</label><label id="otplabel" class="float-end" *ngIf="!OTPResend"> Resent OTP In
+                                {{OTPinterval}} Sec</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control shadow-none" placeholder="OTP" id="txtOtp" (keyup.enter)="validate('R','click','O')">
+                                <div class="float-end" *ngIf="OTPResend">
+                                    <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner" (click)="validate('R','resend','O')">Resend</button>
+                                </div>
+                            </div>
+                            <small class="text-danger er-msg" id="otperror"></small>
+                        </div>
+                    </div> -->
+                    <div class="row pt-2" *ngIf="!isOtp">
+                        <div class="col-12 text-start">
+                            <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                (click)="validate('R','click','A');checkYourEmail=true && confirmationEmail=false "
+                                [disabled]="isSpinner"><i class="btn p-0 ms-1 me-2" id="spin-btn"
+                                    *ngIf="isSpinner"></i>Submit</button>
+                        </div>
+                    </div>
+                    <div class="row pt-2" *ngIf="isOtp">
+                        <div class="col-12 text-start">
+                            <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                (click)="validate('R','click','A')"><i class="btn p-0 ms-1 me-2" id="spin-btn"
+                                    *ngIf="isSpinner"></i>SIGN UP</button>
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-12 text-center">
+                            <a class="fc" (click)="clearAll();isLoginPage=true">Signin</a><br>
+                            <small> A product of AboutBox,Inc</small>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Forgot Password -->
+            <div class="fs" *ngIf="isForgetPassword && !isLoginPage">
+                <div class="border p-3">
+                    <div class="row pt-2">
+                        <div class="col-12 text-center">
+                            <h4>INFIEMAIL</h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <label>Username</label><b class="text-danger">*</b>
+                            <input [(ngModel)]="user.Username" type="text" id="fpusername"
+                                class="form-control shadow-none" placeholder="example@domain.com"
+                                (change)="validate('F','key','U')" (keyup.enter)="validate('F','click','U')">
+                            <small class="text-danger er-msg" id="fpunerror"></small>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-12 text-start">
+                            <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                (click)="validate('F','click','A')"><i class="btn p-0 ms-1 me-2" id="spin-btn"
+                                    *ngIf="isSpinner"></i>Submit</button>
+                        </div>
+                    </div>
+                    <div class="row pt-1">
+                        <div class="col-12 text-center">
+                            <a class="fc" (click)="clearAll();isLoginPage=true;isForgetPassword=false">Signin</a><br>
+                            <small> A product of AboutBox,Inc</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container-fluid ps-md-0" *ngIf="!isLoginPage && checkYourEmail && !confirmationEmail && !isForgetPassword">
+    <div class="row g-0">
+        <div class="col-md-4 col-lg-6">
+            <div class="row"><a href="https://infiemail.com/" target="_blank"><img src="assets/Images/log_logo-c.png"
+                        class="m-3" width="226" height="78"></a></div>
+            <div class="row"><img src="assets/Images/Reg-img-2.jpg" class="m-3 mx-auto"> </div>
+        </div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto forgot_text">
+                            <h3 class="login-heading mb-4 text-center">Check your email</h3>
+                            <!-- Sign In Form -->
+                            <!-- <form [formGroup]="loginform" (ngSubmit)="Login();"> -->
+                            <div class="d-grid">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 forgot_text text-left mb-0 text-center">
+                                        <div class="mb-3">We've sent an email to <a href="#">{{user?.Username}}</a>
+                                        </div>
+                                        Click the link in the email to confirm your address and <br>activate your
+                                        account. <br>
+                                    </div>
+                                </div>
+                                <div class="row p-0 mt-3">
+                                    <div class="col-12 forgot_text text-center ">
+                                        <h4 class="login-heading mb-2 text-center">Didn't get the email?</h4>
+                                        <a (click)="checkYourEmail=false;confirmationEmail=true;"
+                                            href="javascript:void(0)">Resend or edit
+                                            your email address</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex" style="width: 100vw;" *ngIf="!isLoginPage && !checkYourEmail">
+    <div style="width: 50vw;" *ngIf="authService.windowWidth>800">
+        <img src="assets/Images/pic.jpg" style="width:50vw;position: fixed;">
+    </div>
+
+    <!-- <div style="width: 50vw; text-align: center !important;"
+        [ngStyle]="{'padding-top': isLoginPage && !isForgetPassword ? '27vh' : (!isLoginPage && !isForgetPassword ? '18vh' : '32vh')}"> -->
+
+    <div style="margin-left: 115px;" [ngStyle]="{'width': authService.windowWidth>800 ? '35vw' :'60vw'}">
+        <div class="border p-3">
+            <div class="row pt-2">
+                <div class="col-12 text-center">
+                    <h4>INFIEMAIL</h4>
+                </div>
+            </div>
+            <div class="row  pt-2">
+                <div class="col-6">
+                    <label for="Firstname">First Name<span class="text-danger">*</span></label>
+                    <!-- <input type="text" ([ngModel])="user.Firstname"> -->
+                </div>
+                <div class="col-6">
+                    <label for="Lastname">Last Name<span class="text-danger">*</span></label>
+                    <!-- <input type="text" ([ngModel])="user.Lastname"> -->
+                </div>
+
+            </div>
+            <div class="row  pt-2">
+                <div class="col-6">
+                    <!-- <label>First Name<span>*</span></label> -->
+                    <input class="form-control" type="text" name="Firstname" [(ngModel)]="user.Firstname">
+                </div>
+                <div class="col-6">
+                    <!-- <label>Last Name<span>*</span></label> -->
+                    <input class="form-control" type="text" name="Lastname" [(ngModel)]="user.LastName">
+                </div>
+            </div>
+            <div class="row pt-2">
+                <label>EmailId<span class="text-danger">*</span></label>
+                <!-- <input type="text" ([ngModel])="user.Lastname"> -->
+
+                <div class="col-12">
+                    <input class="form-control" type="text" [(ngModel)]="user.Username">
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-12">
+                    <button class="btn btn-bg w-100" type="button" (click)="RegisterNewUser(user)">Submit</button>
+                </div>
+            </div>
+            <div class="row pt-1">
+                <div class="col-12 text-center">
+                    <a class="fc" (click)="clearAll();isLoginPage=true">Signin</a><br>
+                    <small> A product of AboutBox,Inc</small>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid ps-md-0 " *ngIf="isconfirmpassword && otherDetails && !isLoginPage">
+        <div class="row g-0">
+            <!-- <div class="col-md-4 col-lg-6">
+                <div class="row"><a href="https://infiemail.com/" target="_blank"><img
+                            src="assets/Images/log_logo-c.png" class="m-3" width="226" height="78"></a></div>
+                <div class="row"><img src="assets/Images/Reg-img-4.jpg" class="m-3 mx-auto"> </div>
+            </div> -->
+            <div class="col-md-8 col-lg-6">
+                <!-- <div class="login d-flex align-items-center py-5"> -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto forgot_text">
+                                <h3 class="login-heading mb-4 text-center">Create your password</h3>
+                              
+                                <div class="fs">
+                                    <div class="row pt-2">
+                                    <label>Enter Password<span class="text-danger">*</span><label class="float-end"
+                                        (click)="showPassword=!showPassword">
+                                        <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
+                                        <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}" width="13px">
+                                    </label></label>
+                                   
+                                    <input [type]="showPassword ?'text' :'password'" id="txtPassword"
+                                        class="form-control shadow-none" placeholder="Enter Password"
+                                        [(ngModel)]="user.password" autocomplete="off">
+                                    </div>
+                                    <div class="row pt-2">
+                                    <label for="floatingPassword">Confirm Password<span
+                                            class="text-danger">*</span></label>
+                                    <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
+                                        class="form-control shadow-none" placeholder="Confirm Password"
+                                        [(ngModel)]="confirmpswd" autocomplete="off">
+                                    </div>
+
+                                    <div class="row pt-2">
+                                    <button class="btn form-control btn-lg btn-primary text-uppercase fw-bold mb-2" [disabled]="user.password!=confirmpswd"
+                                        type="submit" (click)="chkPassword(user.password)">Submit</button>
+                                    </div>
+
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

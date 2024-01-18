@@ -1,0 +1,162 @@
+/* You can add global styles to this file, and also import other style files */
+
+$myFont: Helvetica,
+sans-serif;
+$myColor: rgba(24, 109, 221, 0.932);
+// .Global css
+body {
+    // font-family: sans-serif !important;
+    font-family: system-ui !important;
+}
+
+
+// scroll bar start
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    opacity: 0.1px;
+    border-radius: 10px;
+    display: none;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: $myColor;
+    border-radius: 10px;
+    display: block;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: $myColor;
+    border-radius: 10px;
+    cursor: pointer !important;
+}
+
+// scroll bar End
+// #Font end
+.fc {
+    color: $myColor !important;
+}
+
+.fs {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+}
+
+.bgc {
+    background-color: $myColor !important;
+}
+
+.ellipsis {
+    float: left;
+    // height: 50px;
+    // line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* new css */
+    max-width: 100%;
+}
+
+.cu-po {
+    //Cursor Pointer
+    cursor: pointer !important;
+}
+
+.tr-cl {
+    //Transform When Click the Element
+    transform: translateY(0.03rem) !important;
+}
+
+// .Global css
+// # BUTTON START
+.btn-bg {
+    background-color: $myColor !important;
+    color: white !important;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+}
+
+.btn-bg:hover {
+    background-color: white !important;
+    color: $myColor !important;
+    border-color: $myColor !important;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+}
+
+.btn-bg:active {
+    transform: translateY(0.03rem);
+}
+
+// # BUTTON END
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+a:hover {
+    // text-decoration: underline !important;
+    color: black !important;
+}
+
+a:active {
+    transform: translateY(0.03rem);
+}
+
+#spin {
+    display: inline-block;
+    width: 3rem !important;
+    height: 3rem !important;
+    border: 3px solid rgba(128, 126, 126, 0.3);
+    border-radius: 50%;
+    border-top-color: $myColor !important;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+#spin-btn {
+    display: inline-block;
+    width: 1rem !important;
+    height: 1rem !important;
+    border: 2px solid rgba(255, 255, 255, 0.904) !important;
+    border-radius: 50%;
+    border-top-color: $myColor !important;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    margin-top: 1px !important;
+}
+
+.btn-bg:hover #spin-btn {
+    border: 2px solid rgba(128, 126, 126, 0.411) !important;
+    border-top-color: $myColor !important;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
