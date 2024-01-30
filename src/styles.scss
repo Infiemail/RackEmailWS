@@ -8,8 +8,22 @@ body {
     // font-family: sans-serif !important;
     font-family: system-ui !important;
 }
-
-
+.bg-white{background:#fff;box-shadow: 0 10px 20px rgba(0,0,0,0.19),inset 0 0 1px rgba(0,0,0,0.5);}
+.bg-t{background: #f8f8f8;}
+.bg-1 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background: url(assets/Images/bg-1.jpg) no-repeat center fixed;
+    color: #fff;
+    font-family: Arial;
+    font-size: 12px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 // scroll bar start
 
 /* width */
@@ -61,7 +75,7 @@ body {
 .bgc {
     background-color: $myColor !important;
 }
-
+.text-cray{color: #6b6868;}
 .ellipsis {
     float: left;
     // height: 50px;

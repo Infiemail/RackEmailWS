@@ -9,6 +9,14 @@ export const environment = {
   mailer: "https://emailapi.infiemail.com/api/", 
   mailerui: "http://localhost:4200/mailer/"
   //accountUrl: "http://localhost:5006/api/",
+
+
+  // accountUrl: "https://securityapi.infyemail.com/api/",
+  // mailer: "https://emailapi.infyemail.com/api/",
+  // mailerui: "http://email.infyemail.com/mailer/"
+
+
+  
 };
 
 /*
