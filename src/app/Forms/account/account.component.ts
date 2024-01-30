@@ -79,6 +79,9 @@ export class AccountComponent implements OnInit {
     this.clearData();
   }
   clearData() {
+
+    this.checkYourEmail = false;
+    this.confirmationEmail = false;
     this.isOtp = false;
     // this.otp = "2205";
     this.user = new User();
@@ -89,6 +92,7 @@ export class AccountComponent implements OnInit {
     this.isSpinner = false;
   }
   signin() {
+
     if (!this.isSpinner) {
 
       this.isSpinner = true;
@@ -169,7 +173,7 @@ export class AccountComponent implements OnInit {
 
   }
   validate(section: string, action: string, field: string) {
-    this.checkYourEmail = true;
+    this.checkYourEmail = false;
     this.confirmationEmail = false;
     if (section == 'R') {
       if ((this.user.Username.trim() == "" || !this.rgxExpForEmail.test(this.user.Username)) && (field == 'U' || field == 'A')) { $("#txtUsername").focus(); $("#txtUsername").css('border-color', 'red'); $("#unerror").text(this.user.Username.trim() == "" ? "EmailId can't empty! " : "Invalid EmailId"); return false; }
@@ -256,7 +260,7 @@ export class AccountComponent implements OnInit {
 
       this.authService.Register(user, (res: Response) => {
         if (res.Status == true) {
-          this.checkYourEmail = true;
+          this.checkYourEmail = false;
           this.confirmationEmail = false;
           this.isconfirmpassword = true;
           alert("Email sent Successfully");
