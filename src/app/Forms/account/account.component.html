@@ -45,20 +45,24 @@
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-12 text-cray text-center">
-                                <a class="fc" (click)="isForgetPassword=true;isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Forgot
+                            <div class="col-md-12 text-cray text-center">
+                                <a class="fc"
+                                    (click)="isForgetPassword=true;isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Forgot
                                     password? / </a>
-                                <a class="fc" (click)="isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Signup</a><br>
-                                <small> A product of AboutBox,Inc</small>
+                                <a class="fc"
+                                    (click)="isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Signup</a><br>
+                                <small></small>
 
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-12 text-cray text-center">
-                                By logging in, you agree to the<br><a class="fc" href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/terms-of-service.html" target="_blank">Terms of services</a> | <a
-                                    class="fc" href="https://www.infiemail.com/cookie-policy.html" target="_blank">Cookies Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/acceptable-use-policy.html" target="_blank">Acceptable Use Policy</a>
+                            <div class="col-md-12 text-cray text-center">
+                                By logging in, you agree to the<br><a class="fc"
+                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
+                                    Policy</a> | <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
+                                    target="_blank">Terms of services</a> | <a class="fc"
+                                    href="https://www.infiemail.com/acceptable-use-policy.html"
+                                    target="_blank">Acceptable Use Policy</a>
                             </div>
                         </div>
                     </div>
@@ -102,18 +106,21 @@
                             </div>
                         </div>
                         <div class="row pt-2" *ngIf="isOtp">
-                        <div class="col-12 text-start"><b class="text-danger">*</b>
-                            <label>OTP</label><label id="otplabel" class="float-end" *ngIf="!OTPResend"> Resent OTP In
-                                {{OTPinterval}} Sec</label>
-                            <div class="d-flex">
-                                <input type="text" class="form-control shadow-none" placeholder="OTP" id="txtOtp" (keyup.enter)="validate('R','click','O')">
-                                <div class="float-end" *ngIf="OTPResend">
-                                    <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner" (click)="validate('R','resend','O')">Resend</button>
+                            <div class="col-12 text-start"><b class="text-danger">*</b>
+                                <label>OTP</label><label id="otplabel" class="float-end" *ngIf="!OTPResend"> Resent OTP
+                                    In
+                                    {{OTPinterval}} Sec</label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control shadow-none" placeholder="OTP" id="txtOtp"
+                                        (keyup.enter)="validate('R','click','O')">
+                                    <div class="float-end" *ngIf="OTPResend">
+                                        <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                            (click)="validate('R','resend','O')">Resend</button>
+                                    </div>
                                 </div>
+                                <small class="text-danger er-msg" id="otperror"></small>
                             </div>
-                            <small class="text-danger er-msg" id="otperror"></small>
                         </div>
-                    </div>
                         <div class="row mt-3" *ngIf="!isOtp">
                             <div class="col-12 text-start">
                                 <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
@@ -129,19 +136,21 @@
                                         *ngIf="isSpinner"></i>SIGN UP</button>
                             </div>
                         </div>
+                        
                         <div class="row mt-3 text-cray">
-                            <div class="col-12 text-center">
+                            <div class="col-md-12 text-center">
                                 <a class="fc" (click)="clearAll();isLoginPage=true">Signin</a><br>
-                                <small> A product of AboutBox,Inc</small>
+                                <small></small>
 
                             </div>
                         </div>
+
                         <div class="row mt-3">
-                            <div class="col-12 text-cray text-center">
-                                By logging in, you agree to the<br><a class="fc" href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/terms-of-service.html" target="_blank">Terms of services</a> | <a
-                                    class="fc" href="https://www.infiemail.com/cookie-policy.html" target="_blank">Cookies Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/acceptable-use-policy.html" target="_blank">Acceptable Use Policy</a>
+                            <div class="col-md-12 text-cray text-center">
+                                <input type="checkbox"> I accept the <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
+                                    target="_blank">Terms of services</a> and have read the <a class="fc"
+                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
+                                    Policy</a>
                             </div>
                         </div>
                     </div>
@@ -171,18 +180,20 @@
                             </div>
                         </div>
                         <div class="row mt-3 text-cray">
-                            <div class="col-12 text-center">
+                            <div class="col-md-12 text-center">
                                 <a class="fc"
                                     (click)="clearAll();isLoginPage=true;isForgetPassword=false">Signin</a><br>
-                                <small> A product of AboutBox,Inc</small>
+                                <small></small>
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-12 text-cray text-center">
-                                By logging in, you agree to the<br><a class="fc" href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/terms-of-service.html" target="_blank">Terms of services</a> | <a
-                                    class="fc" href="https://www.infiemail.com/cookie-policy.html" target="_blank">Cookies Policy</a> | <a
-                                    class="fc" href="https://www.infiemail.com/acceptable-use-policy.html" target="_blank">Acceptable Use Policy</a>
+                            <div class="col-md-12 text-cray text-center">
+                                By logging in, you agree to the<br><a class="fc"
+                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
+                                    Policy</a> | <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
+                                    target="_blank">Terms of services</a> | <a class="fc"
+                                    href="https://www.infiemail.com/acceptable-use-policy.html"
+                                    target="_blank">Acceptable Use Policy</a>
                             </div>
                         </div>
                     </div>
