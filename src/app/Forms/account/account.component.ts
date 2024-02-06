@@ -14,7 +14,9 @@ declare var $: any;
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  IsCheckTerms: boolean = false;
 
+  IsCheckdisabled = true;
   isLoginPage: boolean = true;
   isForgetPassword: boolean = false;
   isOtp: boolean = false;
@@ -48,6 +50,7 @@ export class AccountComponent implements OnInit {
     this.authService.windowHeight = window.innerHeight; this.authService.windowWidth = window.innerWidth;
   }
   ngOnInit() {
+    this.IsCheckdisabled = true;
     this.clearAll();
     // this.activatedRoute.queryParams.subscribe(params => {
     //   const emailId = params['email'];
@@ -79,7 +82,8 @@ export class AccountComponent implements OnInit {
     this.clearData();
   }
   clearData() {
-
+  
+ 
     this.checkYourEmail = false;
     this.confirmationEmail = false;
     this.isOtp = false;
@@ -290,6 +294,16 @@ export class AccountComponent implements OnInit {
         window.location.href = environment.mailerui + res.Item["User"].Id;
       }
     })
+  }
+  checkTerms(e: any) {
+
+    if (this.IsCheckTerms) {
+      this.IsCheckdisabled = false;
+    }
+    else {
+      this.IsCheckdisabled = true;
+    }
+
   }
 }
 

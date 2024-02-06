@@ -4,18 +4,20 @@
 
 export const environment = {
   production: false,
-  accountUrl: "https://securityapi.infiemail.com/api/",
-  //accountUrl: "https://localhost:44312/api/", 
-  mailer: "https://emailapi.infiemail.com/api/", 
-  mailerui: "http://localhost:4200/mailer/"
-  //accountUrl: "http://localhost:5006/api/",
+  // accountUrl: "https://securityapi.infiemail.com/api/",
+  // //accountUrl: "https://localhost:44312/api/", 
+  // mailer: "https://emailapi.infiemail.com/api/", 
+  // mailerui: "http://localhost:4200/mailer/"
+  // //accountUrl: "http://localhost:5006/api/",
 
 
   // accountUrl: "https://securityapi.infyemail.com/api/",
   // mailer: "https://emailapi.infyemail.com/api/",
   // mailerui: "http://email.infyemail.com/mailer/"
 
-
+  accountUrl: "https://localhost:44312/api/",
+  mailer: "https://localhost:60556/api/",
+  mailerui: "http://localhost:4200/mailer/"
   
 };
 
