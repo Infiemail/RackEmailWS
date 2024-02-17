@@ -8,8 +8,9 @@ body {
     // font-family: sans-serif !important;
     font-family: system-ui !important;
 }
-.bg-white{background:#fff;box-shadow: 0 10px 20px rgba(0,0,0,0.19),inset 0 0 1px rgba(0,0,0,0.5);}
-.bg-t{background: #f8f8f8;}
+.bg-white1{background:rgba(255, 255, 255, 0.7)!important;box-shadow: 0 10px 20px rgba(0,0,0,0.01),inset 0 0 1px rgba(0,0,0,0.01);}
+.bg-t{background: #2776df;height: 100vh;}
+.overflow-hide{overflow: hidden;}
 .bg-1 {
     margin: 0;
     padding: 0;

@@ -1,204 +1,78 @@
 <div class="bg-1">
-    <div class="row" style="width: 100vw; text-align: center !important;">
-        <!-- <div style="width: 50vw;" *ngIf="authService.windowWidth>800">
+    <div class="">
+        <div class="overflow-hide">
+            <div class="row" style="height: 100vh;">
+                <!-- <div style="width: 50vw;" *ngIf="authService.windowWidth>800">
         <img src="assets/Images/pic.jpg" style="width:50vw;position: fixed;">
-    </div> [ngStyle]="{'width': authService.windowWidth>800 ? '35vw' :'60vw'}"-->
-        <div class="col-md-4"></div>
-        <div class="col-md-4"
-            [ngStyle]="{'padding-top': isLoginPage && !isForgetPassword ? '14vh' : (!isLoginPage && !isForgetPassword ? '8vh' : '22vh')}">
-            <div class="">
-                <!-- {{isLoginPage}} - {{checkYourEmail}} - {{confirmationEmail}} - {{isForgetPassword}} -->
-                <!-- Login Page -->
-                <div class="fs" *ngIf="isLoginPage && !isForgetPassword">
-                    <div class="border bg-white pt-0 p-3">
-                        <div class="row p-1 bg-t">
-                            <div class="col-12 text-center">
-                                <h4 class="text-black m-0"><img src="./assets/Images/logo.png" class="img-fluid"></h4>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Username</label> <b class="text-danger">*</b>
-                                <input (change)="validate('L','key','U')" type="text" class="form-control shadow-none"
-                                    placeholder="example@domain.com" id="txtLUsername" [(ngModel)]="user.Username">
-                                <small class="text-danger er-msg" id="txtLUsernameerror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Password</label><b class="text-danger">*</b><label class="float-end"
-                                    (click)="showPassword=!showPassword">
-                                    <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}" width="13px">
-                                    <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
-                                </label>
-                                <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
-                                    placeholder="Password" id="txtLPassword" [(ngModel)]="user.Password"
-                                    (change)="validate('L','key','P')" (keyup.enter)="validate('L','click','P')">
-                                <small class="text-danger er-msg" id="txtLPassworderror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner" (click)="signin()">
-                                    <i class="btn p-0 ms-1 me-2" id="spin-btn" *ngIf="isSpinner"></i>SIGN IN</button>
-                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12 text-cray text-center">
-                                <a class="fc"
-                                    (click)="isForgetPassword=true;isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Forgot
-                                    password? / </a>
-                                <a class="fc"
-                                    (click)="isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Signup</a><br>
-                                <small></small>
+    </div> [ngStyle]="{'width': authService.windowWidth>800 ? '35vw' :'60vw'}"
+    [ngStyle]="{'padding-top': isLoginPage && !isForgetPassword ? '14vh' : (!isLoginPage && !isForgetPassword ? '8vh' : '22vh')}"
+-->
 
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12 text-cray text-center">
-                                By logging in, you agree to the<br><a class="fc"
-                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
-                                    Policy</a> | <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
-                                    target="_blank">Terms of services</a> | <a class="fc"
-                                    href="https://www.infiemail.com/acceptable-use-policy.html"
-                                    target="_blank">Acceptable Use Policy</a>
-                            </div>
-                        </div>
+                <div class="col-md-6">
+                    <div class="p-5 bg-t h-100">
+                        <img src="./assets/Images/l-img.png" class="img-fluid">
                     </div>
                 </div>
-                <!-- Register Page -->
-                <div class="fs" *ngIf="!isLoginPage && !isForgetPassword && !checkYourEmail">
-                    <div class="border bg-white p-3 pt-0">
-                        <div class="row p-1 bg-t">
-                            <div class="col-12 text-center">
-                                <h4 class="text-black m-0"><img src="./assets/Images/logo.png" class="img-fluid"></h4>
-                            </div>
-                        </div>
-                        <div class="row p-1 bg-t">
-                            <div class="col-12 text-center">
-                                <h4 class="text-black m-0">Let`s Get Started</h4>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-center"> 
-                                <label class="mb-2">Sign up for free. No credit card required.</label>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Username</label><b class="text-danger">*</b>
-                                <input type="text" class="form-control shadow-none" placeholder="example@domain.com"
-                                    id="txtUsername" [(ngModel)]="user.Username" (change)="validate('R','key','U')">
-                                <small class="text-danger er-msg" id="unerror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Password</label><b class="text-danger">*</b><label class="float-end"
-                                    (click)="showPassword=!showPassword">
-                                    <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
-                                    <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}" width="13px">
-                                </label>
-                                <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
-                                    placeholder="Password" id="txtPassword" [(ngModel)]="user.Password"
-                                    (change)="validate('R','key','P')">
-                                <small class="text-danger er-msg" id="pserror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Confirm Password</label><b class="text-danger">*</b>
-                                <input [type]="showPassword ?'text' :'password'" class="form-control shadow-none"
-                                    placeholder="Confirm Password" id="txtConfirmPassword"
-                                    (change)="validate('R','key','CC')" (keyup.enter)="validate('R','click','CC')">
-                                <small class="text-danger er-msg" id="cpserror"></small>
-                            </div>
-                        </div> 
-                        <div class="row pt-2" *ngIf="isOtp">
-                            <div class="col-12 text-start"><b class="text-danger">*</b>
-                                <label>OTP</label><label id="otplabel" class="float-end" *ngIf="!OTPResend"> Resent OTP
-                                    In
-                                    {{OTPinterval}} Sec</label>
-                                <div class="d-flex">
-                                    <input type="text" class="form-control shadow-none" placeholder="OTP" id="txtOtp"
-                                        (keyup.enter)="validate('R','click','O')">
-                                    <div class="float-end" *ngIf="OTPResend">
-                                        <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
-                                            (click)="validate('R','resend','O')">Resend</button>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <div class="m-3"
+                        [ngStyle]="{'padding-top': isLoginPage && !isForgetPassword ? '14vh' : (!isLoginPage && !isForgetPassword ? '8vh' : '22vh')}">
+                        <!-- {{isLoginPage}} - {{checkYourEmail}} - {{confirmationEmail}} - {{isForgetPassword}} -->
+                        <!-- Login Page -->
+                        <div class="fs h-100" *ngIf="isLoginPage && !isForgetPassword">
+                            <div class="bg-white1 p-3">
+                                <div class="row p-2">
+                                    <div class="col-12 text-center">
+                                        <h4 class="text-black m-0"><img src="./assets/Images/logo.png"
+                                                class="img-fluid">
+                                        </h4>
                                     </div>
                                 </div>
-                                <small class="text-danger er-msg" id="otperror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12 text-cray text-center">
-                                <input type="checkbox" [(ngModel)]="IsCheckTerms" (change)="checkTerms($event)"> I
-                                accept the <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
-                                    target="_blank">Terms of services</a> and have read the <a class="fc"
-                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
-                                    Policy</a>
-                            </div>
-                        </div>
-                        <div class="row mt-3" *ngIf="!isOtp">
-                            <div class="col-12 text-start">
-                                <button class="btn btn-bg shadow-none w-100" [disabled]="IsCheckdisabled"
-                                    (click)="validate('R','click','A');checkYourEmail=false && confirmationEmail=false "><i
-                                        class="btn p-0 ms-1 me-2" id="spin-btn"
-                                        *ngIf="isSpinner"></i>Submit</button>
-                            </div>
-                        </div>
-                        <div class="row mt-3" *ngIf="isOtp">
-                            <div class="col-12 text-start">
-                                <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
-                                    (click)="validate('R','click','A')"><i class="btn p-0 ms-1 me-2" id="spin-btn"
-                                        *ngIf="isSpinner"></i>SIGN UP</button>
-                            </div>
-                        </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Username</label> <b class="text-danger">*</b>
+                                        <input (change)="validate('L','key','U')" type="text"
+                                            class="form-control shadow-none" placeholder="example@domain.com"
+                                            id="txtLUsername" [(ngModel)]="user.Username">
+                                        <small class="text-danger er-msg" id="txtLUsernameerror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Password</label><b class="text-danger">*</b><label
+                                            class="float-end" (click)="showPassword=!showPassword">
+                                            <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}"
+                                                width="13px">
+                                            <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
+                                        </label>
+                                        <input [type]="showPassword ?'text' :'password'"
+                                            class="form-control shadow-none" placeholder="Password" id="txtLPassword"
+                                            [(ngModel)]="user.Password" (change)="validate('L','key','P')"
+                                            (keyup.enter)="validate('L','click','P')">
+                                        <small class="text-danger er-msg" id="txtLPassworderror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                            (click)="signin()">
+                                            <i class="btn p-0 ms-1 me-2" id="spin-btn" *ngIf="isSpinner"></i>SIGN
+                                            IN</button>
+                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 mb-1">
+                                    <div class="col-md-12 text-cray text-center">
+                                        <a class="fc"
+                                            (click)="isForgetPassword=true;isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Forgot
+                                            password? / </a>
+                                        <a class="fc"
+                                            (click)="isLoginPage=false;checkYourEmail=false;confirmationEmail=false; clearData()">Signup</a><br>
+                                        <small></small>
 
-                        <div class="row mt-3 text-cray">
-                            <div class="col-md-12 text-center">
-                                <a class="fc" (click)="clearAll();isLoginPage=true">Signin</a><br>
-                                <small></small>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- Forgot Password -->
-                <div class="fs" *ngIf="isForgetPassword && !isLoginPage">
-                    <div class="border bg-white p-3 pt-0">
-                        <div class="row p-1 bg-t">
-                            <div class="col-12 text-center">
-                                <h4 class="text-black m-0"><img src="./assets/Images/logo.png" class="img-fluid"></h4>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <label class="mb-2">Username</label><b class="text-danger">*</b>
-                                <input [(ngModel)]="user.Username" type="text" id="fpusername"
-                                    class="form-control shadow-none" placeholder="example@domain.com"
-                                    (change)="validate('F','key','U')" (keyup.enter)="validate('F','click','U')">
-                                <small class="text-danger er-msg" id="fpunerror"></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-12 text-start">
-                                <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
-                                    (click)="validate('F','click','A')"><i class="btn p-0 ms-1 me-2" id="spin-btn"
-                                        *ngIf="isSpinner"></i>Submit</button>
-                            </div>
-                        </div>
-                        <div class="row mt-3 text-cray">
-                            <div class="col-md-12 text-center">
-                                <a class="fc"
-                                    (click)="clearAll();isLoginPage=true;isForgetPassword=false">Signin</a><br>
-                                <small></small>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
+                                    </div>
+                                </div>
+                                <!--div class="row mt-3">
                             <div class="col-md-12 text-cray text-center">
                                 By logging in, you agree to the<br><a class="fc"
                                     href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
@@ -206,15 +80,469 @@
                                     target="_blank">Terms of services</a> | <a class="fc"
                                     href="https://www.infiemail.com/acceptable-use-policy.html"
                                     target="_blank">Acceptable Use Policy</a>
+                            </div>
+                        </div-->
+                            </div>
+                        </div>
+                        <!-- Register Page -->
+                        <div class="fs" *ngIf="!isLoginPage && !isForgetPassword && !checkYourEmail">
+                            <div class="bg-white1 p-3 pt-0">
+                                <div class="row p-1">
+                                    <div class="col-12 text-center">
+                                        <h4 class="text-black m-0"><img src="./assets/Images/logo.png"
+                                                class="img-fluid">
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <p>Let's Get started for Free & No credit card required</p>
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Username</label><b class="text-danger">*</b>
+                                        <input type="text" class="form-control shadow-none"
+                                            placeholder="example@domain.com" id="txtUsername"
+                                            [(ngModel)]="user.Username" (change)="validate('R','key','U')">
+                                        <small class="text-danger er-msg" id="unerror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Password</label><b class="text-danger">*</b><label
+                                            class="float-end" (click)="showPassword=!showPassword">
+                                            <!-- <i [ngClass]="showPassword? 'fa fa-eye':'fa fa-eye-slash'"></i> -->
+                                            <img src="assets/Icon/{{!showPassword? 'eye-off.svg':'eye.svg'}}"
+                                                width="13px">
+                                        </label>
+                                        <input [type]="showPassword ?'text' :'password'"
+                                            class="form-control shadow-none" placeholder="Password" id="txtPassword"
+                                            [(ngModel)]="user.Password" (change)="validate('R','key','P')">
+                                        <small class="text-danger er-msg" id="pserror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Confirm Password</label><b class="text-danger">*</b>
+                                        <input [type]="showPassword ?'text' :'password'"
+                                            class="form-control shadow-none" placeholder="Confirm Password"
+                                            id="txtConfirmPassword" (change)="validate('R','key','CC')"
+                                            (keyup.enter)="validate('R','click','CC')">
+                                        <small class="text-danger er-msg" id="cpserror"></small>
+                                    </div>
+                                </div>
+                                <div class="row pt-2" *ngIf="isOtp">
+                                    <div class="col-12 text-start"><b class="text-danger">*</b>
+                                        <label>OTP</label><label id="otplabel" class="float-end" *ngIf="!OTPResend">
+                                            Resent
+                                            OTP
+                                            In
+                                            {{OTPinterval}} Sec</label>
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control shadow-none" placeholder="OTP"
+                                                id="txtOtp" (keyup.enter)="validate('R','click','O')">
+                                            <div class="float-end" *ngIf="OTPResend">
+                                                <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                                    (click)="validate('R','resend','O')">Resend</button>
+                                            </div>
+                                        </div>
+                                        <small class="text-danger er-msg" id="otperror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12 text-cray text-center">
+                                        <input type="checkbox" [(ngModel)]="IsCheckTerms" (change)="checkTerms($event)">
+                                        I
+                                        accept the <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
+                                            target="_blank">Terms of services</a> and have read the <a class="fc"
+                                            href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
+                                            Policy</a>
+                                    </div>
+                                </div>
+                                <div class="row mt-3" *ngIf="!isOtp">
+                                    <div class="col-12 text-start">
+                                        <button class="btn btn-bg shadow-none w-100" [disabled]="IsCheckdisabled"
+                                            (click)="validate('R','click','A');checkYourEmail=false && confirmationEmail=false "><i
+                                                class="btn p-0 ms-1 me-2" id="spin-btn"
+                                                *ngIf="isSpinner"></i>Submit</button>
+                                    </div>
+                                </div>
+                                <div class="row mt-3" *ngIf="isOtp">
+                                    <div class="col-12 text-start">
+                                        <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                            (click)="validate('R','click','A')"><i class="btn p-0 ms-1 me-2"
+                                                id="spin-btn" *ngIf="isSpinner"></i>SIGN UP</button>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-md-12 text-center">
+                                        <a class="fc" (click)="clearAll();isLoginPage=true">Signin</a><br>
+                                        <small></small>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- Forgot Password -->
+                        <div class="fs" *ngIf="isForgetPassword && !isLoginPage">
+                            <div class="bg-white1 p-3 pt-0">
+                                <div class="row p-1">
+                                    <div class="col-12 text-center">
+                                        <h4 class="text-black m-0"><img src="./assets/Images/logo.png"
+                                                class="img-fluid">
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <label class="mb-2">Username</label><b class="text-danger">*</b>
+                                        <input [(ngModel)]="user.Username" type="text" id="fpusername"
+                                            class="form-control shadow-none" placeholder="example@domain.com"
+                                            (change)="validate('F','key','U')"
+                                            (keyup.enter)="validate('F','click','U')">
+                                        <small class="text-danger er-msg" id="fpunerror"></small>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 text-cray">
+                                    <div class="col-12 text-start">
+                                        <button class="btn btn-bg shadow-none w-100" [disabled]="isSpinner"
+                                            (click)="validate('F','click','A')"><i class="btn p-0 ms-1 me-2"
+                                                id="spin-btn" *ngIf="isSpinner"></i>Submit</button>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 mb-2 text-cray">
+                                    <div class="col-md-12 text-center">
+                                        <a class="fc"
+                                            (click)="clearAll();isLoginPage=true;isForgetPassword=false">Signin</a><br>
+                                        <small></small>
+                                    </div>
+                                </div>
+                                <!--div class="row mt-3">
+                            <div class="col-md-12 text-cray text-center">
+                                By logging in, you agree to the<br><a class="fc"
+                                    href="https://www.infiemail.com/privacy-policy.html" target="_blank">Privacy
+                                    Policy</a> | <a class="fc" href="https://www.infiemail.com/terms-of-service.html"
+                                    target="_blank">Terms of services</a> | <a class="fc"
+                                    href="https://www.infiemail.com/acceptable-use-policy.html"
+                                    target="_blank">Acceptable Use Policy</a>
+                            </div>
+                        </div-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <div id="myModal" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+                    <h4 class="modal-title">Welcome to infiemail = "mil@gmail.com"</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Email (Primary)</label>
+                                <p>mvlive@infimail.com</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>.</p>
+                                <button class="btn btn-info btn-sm"><i class="fa fa-lock"></i> Change Email</button>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Password</label>
+                                <button class="btn btn-info btn-sm"><i class="fa fa-lock"></i> Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name *</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name *</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Title</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Country</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Time Zone</label>
+                                <select class="form-control">
+                                    <option>--- Select Time Zone ---</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Your Weekly schedule</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>My week start on</label>
+                                <select class="form-control">
+                                    <option>Monday</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Ends on</label>
+                                <select class="form-control">
+                                    <option>Friday</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>My day start at</label>
+                                <select class="form-control">
+                                    <option>8.00AM</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Ends at</label>
+                                <select class="form-control">
+                                    <option>6.00PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">Skip</button>
+                    <button type="button" class="btn btn-default">Continue</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade in" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+                    <h4 class="modal-title">Set up your email account</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Email address</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Set up your Email account</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <h5>Your email is hosted by Microsoft.</h5>
+                                <h5>We recommend connecting to Outlook 365</h5>
+                                <a href="" class="btn btn-danger btn-sm">Connect to Outlook 365</a>
+                                <h6>I want to choose my email provide myself</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Email address</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <h5>We can't identify your email provider.</h5>
+                                <a href="" class="btn btn-danger btn-sm">Choose eail provider</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Choose your email provider</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <h5>Google / Gmail</h5>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <h5>Microsoft Outlook</h5>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <h5>Other mail provider</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Not sure which to choose?</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Edit Settings</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Authentication</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Full Name</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Email ID</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Reply to</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control">
+                                    <option>--- Username and Password ---</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">Incoming server</div>
+                            <div class="col-md-4">
+                                <input type="checkbox">  Requires authentication
+                            </div>
+                            <div class="col-md-2">Outgoing server</div>
+                            <div class="col-md-4">
+                                <input type="checkbox">  Same as Incoming
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">User Name</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Password</div>
+                                        <div class="col-md-7"><input class="form-control" type="password"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Server Name</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Encryption</div>
+                                        <div class="col-md-4">
+                                            <select class="form-control">
+                                                <option>--- ---</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">Port</div>
+                                        <div class="col-md-1"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">User Name</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Password</div>
+                                        <div class="col-md-7"><input class="form-control" type="password"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Server Name</div>
+                                        <div class="col-md-7"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-5">Encryption</div>
+                                        <div class="col-md-4">
+                                            <select class="form-control">
+                                                <option>--- ---</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">Port</div>
+                                        <div class="col-md-1"><input class="form-control" type="text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                    </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">Verify / Test Connection</button>
+                    <button type="button" class="btn btn-default">Continue</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- <div class="ps-md-0" *ngIf="!isLoginPage && checkYourEmail && !confirmationEmail && !isForgetPassword">
         <div class="row g-0">
