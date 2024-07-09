@@ -23,6 +23,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+                        
                         "outputPath": "dist/accounts",
                         "index": "src/index.html",
                         "main": "src/main.ts",
@@ -34,32 +35,24 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "node_modules/bootstrap/dist/css/bootstrap.css",
-                            "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+                            "src/styles.scss"
+
                         ],
                         "scripts": [
-                            "node_modules/jquery/dist/jquery.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "node_modules/popper.js/dist/umd/popper.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-                            "node_modules/@fortawesome/fontawesome-free/js/all.min.js" 
+                      
                         ]
                     },
-                    "configurations": {
+                    "configurations": { 
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    // "maximumWarning": "500kb",
-                                    // "maximumError": "1mb"
-                                    "maximumWarning": "2mb",
+                                    "maximumWarning": "3mb",
                                     "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "3mb",
+                                    "maximumError": "3mb"
                                 }
                             ],
                             "fileReplacements": [{

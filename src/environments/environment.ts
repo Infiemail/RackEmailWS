@@ -17,8 +17,8 @@ export const environment = {
 
   accountUrl: "https://localhost:44312/api/",
   mailer: "https://localhost:60556/api/",
-  mailerui: "http://localhost:4200/mailer/"
-  
+  mailerui: "http://localhost:4200/mail/"
+
 };
 
 /*

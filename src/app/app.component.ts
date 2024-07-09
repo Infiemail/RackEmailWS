@@ -6,11 +6,8 @@ declare var $: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'accounts';
+  title = 'rackemail';
   ngOnInit() {
-    $("#toast").addClass("snackbar");
-  }
-  show() {
-    $("#toast").addClass( "show");
+
   }
 }
