@@ -46,6 +46,8 @@ import { FooterComponent } from './Forms/Shared/footer/footer.component';
 import { LeftManuComponent } from './Forms/Shared/left-manu/left-manu.component';
 import { TermsandconditionsComponent } from './Forms/termsandconditions/termsandconditions.component';
 import { PrivacyComponent } from './Forms/privacy/privacy.component';
+import { CookiePolicyComponent } from './Forms/cookie-policy/cookie-policy.component';
+import { AcceptableUsePolicyComponent } from './Forms/acceptable-use-policy/acceptable-use-policy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +90,8 @@ import { PrivacyComponent } from './Forms/privacy/privacy.component';
     LeftManuComponent,
     TermsandconditionsComponent,
     PrivacyComponent,
+    CookiePolicyComponent,
+    AcceptableUsePolicyComponent,
 
   ],
   imports: [

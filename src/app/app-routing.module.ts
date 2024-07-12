@@ -42,6 +42,9 @@ import { FooterComponent } from './Forms/Shared/footer/footer.component';
 import { LeftManuComponent } from './Forms/Shared/left-manu/left-manu.component';
 import { TermsandconditionsComponent } from './Forms/termsandconditions/termsandconditions.component';
 import { PrivacyComponent } from './Forms/privacy/privacy.component';
+import { CookiePolicyComponent } from './Forms/cookie-policy/cookie-policy.component';
+import { AcceptableUsePolicyComponent } from './Forms/acceptable-use-policy/acceptable-use-policy.component';
+
 const routes: Routes = [
 
   { path: "", pathMatch: "full", redirectTo: 'Home' },
@@ -84,6 +87,8 @@ const routes: Routes = [
   { path: "LeftManu", component: LeftManuComponent },
   { path: "TermsConditions", component: TermsandconditionsComponent },
   { path: "Privacy", component: PrivacyComponent },
+  { path: "CookiePolicy", component: CookiePolicyComponent },
+  { path: "AcceptUsePolicy", component: AcceptableUsePolicyComponent },
   { path: '**', component: HomeComponent },
 
 
